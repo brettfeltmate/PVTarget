@@ -1,3 +1,5 @@
+-- noinspection SqlNoDataSourceInspectionForFile
+
 /*
 
 ******************************************************************************************
@@ -56,3 +58,54 @@ CREATE TABLE trials (
     block_num integer not null,
     trial_num integer not null
 );
+
+CREATE TABLE mouse_movement (
+    id integer primary key autoincrement not null,
+    participant_id integer not null references participants(id),
+    mouse_delta_x text not null,
+    timestamp text not null
+);
+
+CREATE TABLE target_position (
+    id integer primary key autoincrement not null,
+    participant_id integer not null references participants(id),
+    target_pos text not null,
+    timestamp text not null
+);
+
+CREATE TABLE mouse_velocity (
+    id integer primary key autoincrement not null,
+    participant_id integer not null references participants(id),
+    mouse_velocity text not null,
+    timestamp text not null
+);
+
+CREATE TABLE target_velocity (
+    id integer primary key autoincrement not null,
+    participant_id integer not null references participants(id),
+    target_velocity text not null,
+    timestamp text not null
+);
+
+CREATE TABLE target_direction (
+    id integer primary key autoincrement not null,
+    participant_id integer not null references participants(id),
+    target_direction text not null,
+    timestamp text not null
+);
+
+CREATE TABLE target_distance (
+    id integer primary key autoincrement not null,
+    participant_id integer not null references participants(id),
+    target_distance text not null,
+    timestamp text not null
+);
+
+CREATE TABLE pvt_response (
+    id integer primary key autoincrement not null,
+    participant_id integer not null references participants(id),
+    pvt_rt text not null,
+    timestamp text not null
+);
+
+
